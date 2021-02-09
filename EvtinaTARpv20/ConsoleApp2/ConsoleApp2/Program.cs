@@ -62,6 +62,31 @@ namespace ConsoleApp2
             {
                 Console.WriteLine("Puhkame");
             }
+            Console.WriteLine("c=12*x-18*(b-a)");
+            int a_ = rnd.Next(0, 10);
+            int b = rnd.Next(0, 10);
+            int x = rnd.Next(0, 10);
+            float c = 12 * x - 18*(b - a_);
+            Console.WriteLine("Vastus on: {0}", c);
+            Console.WriteLine("Kirjuta sinu nimi ja perekonanimi:");
+            string FIO = Console.ReadLine();
+            Console.WriteLine("Kirjuta oma rühm:");
+            string ruhm = Console.ReadLine();
+            Console.WriteLine("Kirjuta oma variandi number:");
+            string n = Console.ReadLine();
+            Console.WriteLine("Kirjuta sinu sugu:");
+            string sugu = Console.ReadLine();
+            Console.WriteLine("labotitöö art ja pealkiri:");
+            string arv_ja_pealkiri = Console.ReadLine();
+            StreamWriter files = new StreamWriter(@"..\..\vastus.txt", true);
+            files.WriteLine("a:" + a_ +", "+ "b:" + b + ", " + "x:" + x);
+            files.WriteLine("c=12*x-18*(b-a)" + " " + "Vastus on: " + c);
+            files.WriteLine(FIO + ", " + sugu + ", " + ruhm + "\n" + n + ", " + arv_ja_pealkiri);
+            files.Close();
+            Console.WriteLine("Kirjuta a:");
+            int a1 = Convert.ToInt32(Console.ReadLine());
+            float c_ = 12 * x - 18 * (b - a1);
+            Console.WriteLine("Vastus on: {0}", c_);
             Console.ReadLine();
         }
     }
