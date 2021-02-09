@@ -74,6 +74,8 @@ namespace ConsoleApp2
             string ruhm = Console.ReadLine();
             Console.WriteLine("Kirjuta oma variandi number:");
             string n = Console.ReadLine();
+            Console.WriteLine("Kirjuta sinu vanus:");
+            string vana = Console.ReadLine();
             Console.WriteLine("Kirjuta sinu sugu:");
             string sugu = Console.ReadLine();
             Console.WriteLine("labotitöö art ja pealkiri:");
@@ -81,7 +83,7 @@ namespace ConsoleApp2
             StreamWriter files = new StreamWriter(@"..\..\vastus.txt", true);
             files.WriteLine("a:" + a_ +", "+ "b:" + b + ", " + "x:" + x);
             files.WriteLine("c=12*x-18*(b-a)" + " " + "Vastus on: " + c);
-            files.WriteLine(FIO + ", " + sugu + ", " + ruhm + "\n" + n + ", " + arv_ja_pealkiri);
+            files.WriteLine(FIO + ", " + sugu + ", " + vana+ ", " + ruhm + "\n" + n + ", " + arv_ja_pealkiri);
             files.Close();
             Console.WriteLine("Kirjuta a:");
             int a1 = Convert.ToInt32(Console.ReadLine());
