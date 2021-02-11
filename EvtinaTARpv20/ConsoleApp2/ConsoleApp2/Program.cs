@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,8 +9,93 @@ namespace ConsoleApp2
 {
     class Program
     {
+        public void vaba_p(int[,] numbers2)
+        {
+            for (int i = 0; i < numbers2.GetLength(0); i++)
+			{
+                for (int j = 0; j < numbers2.GetLength(1); j++)
+			    {
+                    Console.Write(numbers2[i,j]);
+			    }
+                Console.WriteLine();
+			}
+        }
         static void Main(string[] args)
         {
+            ConsoleKeyInfo nupp = new ConsoleKeyInfo();
+            int[,] numbers2 =new int[4,7];
+            Program prog = new Program();
+            prog.vaba_p(numbers2);
+            Console.WriteLine("Kas sa taha osta pileti?(-/+)");
+            if (Console.ReadLine()=="+")
+            {   
+                do
+	            {
+                    Console.WriteLine("Vali rida");
+                    int rida=(Convert.ToInt32(Console.ReadLine()))-1;
+                    Console.WriteLine("Vali koht");
+                    int koht=(Convert.ToInt32(Console.ReadLine()))-1;
+                    if (numbers2[rida,koht]==0)
+	                {
+                        Console.WriteLine("Koht on vaba!");
+                        numbers2[rida,koht] = 1;
+                        for (int i = 0; i < numbers2.GetLength(0); i++)
+			            {
+                            for (int j = 0; j < numbers2.GetLength(1); j++)
+			                {
+                                Console.Write(numbers2[i,j]);
+			                }
+                            Console.WriteLine();
+                        }
+                    }   
+                    else
+               	    {
+                        Console.WriteLine("Koht on kinni!Vali teine koht");
+            	    }
+            
+                    nupp = Console.ReadKey();
+	            }while (nupp.Key!=ConsoleKey.Escape);
+                StreamWriter f = new StreamWriter(@"..\..\kohtad.txt", false);
+                for (int i = 0; i < numbers2.GetLength(0); i++)
+			    {
+                    for (int j = 0; j < numbers2.GetLength(1); j++)
+			        {
+                        if (numbers2[i,j]==1)
+                        {
+                            f.Write((i+1)+"/"+(j+1)+"  "+numbers2[i,j]+"\n");
+                        }
+                        else
+                        {
+                            f.Write((i+1)+"/"+(j+1)+"  "+numbers2[i,j]+"\n");
+                        }
+			        }
+                }
+                f.Close();
+            }
+            else
+            {
+                string[] texta=new string[4];
+                for (int i = 0; i < texta.GetLength(0); i++)
+			    {
+                    Console.WriteLine("{0} - text",(i+1).ToString());
+                    texta[i]=Console.ReadLine();
+			    }
+                foreach (string item in texta)
+	            {
+                    Console.Write(item+" ");
+	            }
+            }
+
+            int[] numbers=new int[5] {1,2,3,4,5};//создание массивa
+            Console.WriteLine(numbers[1]);
+            foreach (int item in numbers)//foreach перебирает ЭЛЕМЕНТЫ
+	        {
+                Console.Write(item+" ");
+	        }
+            for (int i = 0; i < numbers.Length; i++)
+			{
+                Console.Write(numbers[i]+", ");
+			}
             Random rnd = new Random();
             int hinne = rnd.Next(1, 7);
             Console.WriteLine("Hinne: {0}",hinne);
@@ -31,7 +116,7 @@ namespace ConsoleApp2
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Clear();
             Console.WriteLine(tekst);
-            ConsoleKeyInfo nupp = new ConsoleKeyInfo();
+
             do
             {
                 Console.WriteLine("Vajuta Backspace");
@@ -85,11 +170,8 @@ namespace ConsoleApp2
             files.WriteLine("c=12*x-18*(b-a)" + " " + "Vastus on: " + c);
             files.WriteLine(FIO + ", " + sugu + ", " + vana+ ", " + ruhm + "\n" + n + ", " + arv_ja_pealkiri);
             files.Close();
-            Console.WriteLine("Kirjuta a:");
-            int a1 = Convert.ToInt32(Console.ReadLine());
-            float c_ = 12 * x - 18 * (b - a1);
-            Console.WriteLine("Vastus on: {0}", c_);
-            Console.ReadLine();
+
+                
         }
     }
 }
